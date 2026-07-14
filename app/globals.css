@@ -128,3 +128,35 @@
     @apply font-sans;
   }
 }
+
+.like {
+  mask-image: url("https://assets.torob.com/public/main/images/like.svg");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center center;
+  background-color: #94a3b8;
+}
+
+.like_fill {
+  mask-image: url("https://assets.torob.com/public/main/images/like_fill.svg");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center center;
+  background-color: #f43f5e;
+}
+
+.bell {
+  mask-image: url("https://assets.torob.com/public/main/images/bell.svg");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center center;
+  background-color: #94a3b8;
+}
+
+.bell_fill {
+  mask-image: url("https://assets.torob.com/public/main/images/bell_fill.svg");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center center;
+  background-color: #f43f5e
+}

@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { useGetUser } from "@/lib/apis";
 
 export default function User() {
+  const { data, isPending, error } = useGetUser()
   return (
     <Popover>
       <PopoverTrigger asChild>
         <p className="dark:text-[#f1f5f9] text-[#1e293b] text-xs border dark:border-[#f1f5f9] border-[#1e293b] px-3 py-1.5 rounded-lg">
-          09945870013
+          {data?.phone}
         </p>
       </PopoverTrigger>
 

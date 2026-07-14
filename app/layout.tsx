@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import QueryProvider from "@/components/query-provider";
 
 const myFont = localFont({
   src: [
@@ -23,9 +25,11 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="fa" dir="rtl" className={myFont.className}>
       <body className="dark:bg-[#15202b] bg-[#f1f5f9]">
+                <QueryProvider>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
+        <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
+        </QueryProvider>
       </body>
     </html>
   );

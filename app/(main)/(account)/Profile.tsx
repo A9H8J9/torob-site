@@ -15,7 +15,7 @@ export default function Profile() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   return (
-    <div className="h-full dark:bg-[#212b36] border-t border-b border-[#f1f5f9] dark:border-[#15202b] space-y-6 px-6 bg-[#ffffff] dark:text-white text-black dark:fill-white fill-black w-64 py-4">
+    <div className="dark:bg-[#212b36] border-t border-b border-[#f1f5f9] dark:border-[#15202b] space-y-6 px-6 bg-[#ffffff] dark:text-white text-black dark:fill-white fill-black w-64 py-4">
       <Link
         href="/user/analytics"
         className={`flex items-center gap-3 text-sm ${
