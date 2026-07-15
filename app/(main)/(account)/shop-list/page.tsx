@@ -1,83 +1,16 @@
-import { Input } from "@/components/ui/input";
+'use client'
+import { Spinner } from "@/components/ui/spinner";
+import { useGetShops } from "@/lib/apis";
 import { Search } from "lucide-react";
-const shops = [
-  {
-    id: 1,
-    name: "آسو گالری دات کام",
-    logo: "	https://image.torob.com/storage/internet_shop/logos/store-logo-placeholder.png",
-  },
-  {
-    id: 2,
-    name: "آسو گالری دات کام",
-    logo: "	https://image.torob.com/storage/internet_shop/logos/store-logo-placeholder.png",
-  },
-  {
-    id: 3,
-    name: "آسو گالری دات کام",
-    logo: "	https://image.torob.com/storage/internet_shop/logos/store-logo-placeholder.png",
-  },
-  {
-    id: 4,
-    name: "آسو گالری دات کام",
-    logo: "	https://image.torob.com/storage/internet_shop/logos/store-logo-placeholder.png",
-  },
-  {
-    id: 5,
-    name: "آسو گالری دات کام",
-    logo: "	https://image.torob.com/storage/internet_shop/logos/store-logo-placeholder.png",
-  },
-  {
-    id: 6,
-    name: "آسو گالری دات کام",
-    logo: "	https://image.torob.com/storage/internet_shop/logos/store-logo-placeholder.png",
-  },
-  {
-    id: 7,
-    name: "آسو گالری دات کام",
-    logo: "	https://image.torob.com/storage/internet_shop/logos/store-logo-placeholder.png",
-  },
-  {
-    id: 8,
-    name: "آسو گالری دات کام",
-    logo: "	https://image.torob.com/storage/internet_shop/logos/store-logo-placeholder.png",
-  },
-  {
-    id: 9,
-    name: "آسو گالری دات کام",
-    logo: "	https://image.torob.com/storage/internet_shop/logos/store-logo-placeholder.png",
-  },
-  {
-    id: 10,
-    name: "آسو گالری دات کام",
-    logo: "	https://image.torob.com/storage/internet_shop/logos/store-logo-placeholder.png",
-  },
-  {
-    id: 11,
-    name: "آسو گالری دات کام",
-    logo: "	https://image.torob.com/storage/internet_shop/logos/store-logo-placeholder.png",
-  },
-  {
-    id: 12,
-    name: "آسو گالری دات کام",
-    logo: "	https://image.torob.com/storage/internet_shop/logos/store-logo-placeholder.png",
-  },
-  {
-    id: 13,
-    name: "آسو گالری دات کام",
-    logo: "	https://image.torob.com/storage/internet_shop/logos/store-logo-placeholder.png",
-  },
-  {
-    id: 14,
-    name: "آسو گالری دات کام",
-    logo: "	https://image.torob.com/storage/internet_shop/logos/store-logo-placeholder.png",
-  },
-  {
-    id: 15,
-    name: "آسو گالری دات کام",
-    logo: "	https://image.torob.com/storage/internet_shop/logos/store-logo-placeholder.png",
-  },
-];
+
 export default function Shops() {
+  const {data, isPending, error} = useGetShops()
+
+  if(isPending) {
+    return <div className="w-full flex items-center justify-center">
+      <Spinner className="size-8 text-[#d73948]" />
+    </div>
+  }
   return (
     <div className="flex w-full justify-center mt-12">
       <div className="flex flex-col items-center">
@@ -93,7 +26,9 @@ export default function Shops() {
           />
         </div>
         <div className="grid grid-cols-3 gap-5 mt-10">
-          {shops.map((x) => {
+          {
+            data?.length > 0 &&
+            data?.map((x) => {
             return (
               <div
                 key={x.id}
@@ -105,7 +40,8 @@ export default function Shops() {
                 </p>
               </div>
             );
-          })}
+          })
+}
         </div>
       </div>
     </div>
