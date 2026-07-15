@@ -1,11 +1,15 @@
+'use client'
 import Link from "next/link";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { useGetUser } from "@/lib/apis";
+import AuthModal from "./auth-modal";
+import { useState } from "react";
 
 export default function User() {
+    const [open, setOpen] = useState(false);
   const { data, isPending, error } = useGetUser()
-  return (
-    <Popover>
+  return data?.phone ? (
+ <Popover>
       <PopoverTrigger asChild>
         <p className="dark:text-[#f1f5f9] text-[#1e293b] text-xs border dark:border-[#f1f5f9] border-[#1e293b] px-3 py-1.5 rounded-lg">
           {data?.phone}
@@ -61,5 +65,15 @@ export default function User() {
         </div>
       </PopoverContent>
     </Popover>
-  );
+  ) : (
+    <>
+ <p onClick={() => setOpen(true)} className="dark:text-[#f1f5f9] text-[#1e293b] text-xs border dark:border-[#f1f5f9] border-[#1e293b] px-3 py-1.5 rounded-lg">
+          ورود / ثبت نام
+        </p>
+      <AuthModal
+        open={open}
+        onOpenChange={setOpen}
+      />
+      </>
+  )
 }
